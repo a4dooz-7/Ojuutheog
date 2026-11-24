@@ -1,0 +1,2205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OJUU — A Birthday Tribute</title>
+
+    <!-- Custom Botanical Floral SVG Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23D48C9E'/%3E%3Cstop offset='100%25' stop-color='%23B76E79'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='%23FDFBF7' stroke='%23B76E79' stroke-width='2'/%3E%3Cpath d='M32 12 C37 22, 42 22, 52 32 C42 37, 37 42, 32 52 C27 42, 22 37, 12 32 C22 27, 27 22, 32 12 Z' fill='url(%23g)' opacity='0.85'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%23FDFBF7'/%3E%3C/svg%3E"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Cormorant Garamond"', "Georgia", "serif"],
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+            },
+            colors: {
+              champagne: "#FAF6F0",
+              ivory: "#F5EFE6",
+              dustyrose: {
+                100: "#F8ECEE",
+                200: "#EED6DC",
+                300: "#DFB6C0",
+                400: "#D48C9E",
+                500: "#B76E79",
+                600: "#9A545F",
+                700: "#7B3E48",
+              },
+              espresso: {
+                700: "#4A383E",
+                800: "#3A2B30",
+                900: "#2B2124",
+              },
+              antique: {
+                200: "#EFE3D8",
+                300: "#DEC6B4",
+                400: "#C9A96E",
+                500: "#A97E65",
+              },
+            },
+            animation: {
+              "fade-up": "fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards",
+              "gentle-float": "gentleFloat 7s ease-in-out infinite",
+              "bloom-scale":
+                "bloomScale 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
+            },
+            keyframes: {
+              fadeUp: {
+                "0%": { opacity: "0", transform: "translateY(18px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              gentleFloat: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-8px)" },
+              },
+              bloomScale: {
+                "0%": { transform: "scale(0.6) rotate(-8deg)", opacity: "0.4" },
+                "100%": { transform: "scale(1) rotate(0deg)", opacity: "1" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #faf6f0;
+        background-image:
+          radial-gradient(
+            at 10% 15%,
+            rgba(212, 140, 158, 0.14) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 90% 10%,
+            rgba(201, 169, 110, 0.18) 0px,
+            transparent 55%
+          ),
+          radial-gradient(
+            at 80% 85%,
+            rgba(212, 140, 158, 0.12) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 15% 85%,
+            rgba(239, 227, 216, 0.35) 0px,
+            transparent 55%
+          );
+        background-attachment: fixed;
+        color: #2b2124;
+        overflow-x: hidden;
+      }
+
+      /* Editorial Glassmorphism */
+      .editorial-glass {
+        background: rgba(250, 246, 240, 0.78);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(183, 110, 121, 0.18);
+        box-shadow: 0 20px 50px rgba(43, 33, 36, 0.05);
+      }
+
+      .nav-glass {
+        background: rgba(250, 246, 240, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(183, 110, 121, 0.16);
+      }
+
+      /* Hide scrollbar cleanly on mobile nav */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* Arched Portrait Frame */
+      .arch-frame {
+        border-radius: 220px 220px 24px 24px;
+        box-shadow: 0 25px 60px rgba(43, 33, 36, 0.12);
+      }
+
+      /* Editorial Gallery Card */
+      .gallery-frame {
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(183, 110, 121, 0.18);
+        box-shadow: 0 12px 32px rgba(43, 33, 36, 0.05);
+        transition:
+          transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.45s ease,
+          border-color 0.35s ease;
+      }
+      .gallery-frame:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 22px 45px rgba(183, 110, 121, 0.14);
+        border-color: rgba(183, 110, 121, 0.45);
+      }
+
+      /* Candle Flame Flicker */
+      @keyframes candleFlicker {
+        0%,
+        100% {
+          transform: scaleY(1) rotate(-1.5deg);
+          opacity: 0.95;
+        }
+        50% {
+          transform: scaleY(1.09) rotate(1.5deg);
+          opacity: 1;
+        }
+      }
+      .flame-animate {
+        transform-origin: center bottom;
+        animation: candleFlicker 1.4s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans antialiased min-h-screen flex flex-col relative selection:bg-dustyrose-200 selection:text-espresso-900"
+  >
+    <!-- Ambient Floating Botanical Petals & Golden Motes Canvas -->
+    <canvas
+      id="botanical-canvas"
+      class="fixed inset-0 pointer-events-none z-0"
+    ></canvas>
+
+    <!-- Golden Light & Rose Petal Shower Canvas -->
+    <canvas
+      id="celebration-canvas"
+      class="fixed inset-0 pointer-events-none z-50"
+    ></canvas>
+
+    <!-- =====================================================================
+       STICKY EDITORIAL NAVIGATION BAR
+       ===================================================================== -->
+    <header class="sticky top-0 z-40 nav-glass">
+      <div
+        class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex flex-wrap items-center justify-between gap-4"
+      >
+        <!-- Custom Botanical Monogram Logo: OJUU -->
+        <button
+          onclick="navigateTo('home')"
+          class="flex items-center gap-3 group focus:outline-none text-left shrink-0"
+        >
+          <div
+            class="w-10 h-10 rounded-full border border-dustyrose-500/40 bg-ivory flex items-center justify-center shadow-sm group-hover:border-dustyrose-500 transition-colors"
+          >
+            <!-- Custom Inline Botanical Rose Emblem SVG -->
+            <svg
+              class="w-6 h-6 text-dustyrose-500 transition-transform duration-500 group-hover:rotate-12"
+              viewBox="0 0 36 36"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 5C20.5 11 25 15.5 31 18C25 20.5 20.5 25 18 31C15.5 25 11 20.5 5 18C11 15.5 15.5 11 18 5Z"
+                stroke="currentColor"
+                stroke-width="1.4"
+                fill="rgba(212,140,158,0.16)"
+              />
+              <circle
+                cx="18"
+                cy="18"
+                r="3.2"
+                stroke="currentColor"
+                stroke-width="1.3"
+                fill="#FAF6F0"
+              />
+              <path
+                d="M18 2V5M18 31V34M2 18H5M31 18H34"
+                stroke="currentColor"
+                stroke-width="1.1"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div>
+            <span
+              class="font-serif text-2xl sm:text-[26px] font-semibold tracking-[0.22em] text-espresso-900 block leading-none"
+              >OJUU</span
+            >
+            <span
+              class="text-[10px] uppercase tracking-[0.28em] text-dustyrose-500 font-medium mt-1 block"
+              >Twenty-Fifth November</span
+            >
+          </div>
+        </button>
+
+        <!-- Desktop & Mobile Navigation Links -->
+        <nav
+          class="flex items-center gap-1 sm:gap-2 bg-ivory/90 p-1.5 rounded-full border border-dustyrose-500/20 shadow-sm overflow-x-auto no-scrollbar max-w-full"
+        >
+          <button
+            onclick="navigateTo('home')"
+            id="nav-home"
+            class="nav-link px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium tracking-wide transition-all flex items-center gap-2 whitespace-nowrap"
+          >
+            <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+            <span>Home</span>
+          </button>
+          <button
+            onclick="navigateTo('memories')"
+            id="nav-memories"
+            class="nav-link px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium tracking-wide transition-all flex items-center gap-2 whitespace-nowrap"
+          >
+            <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+            <span>Memories</span>
+          </button>
+          <button
+            onclick="navigateTo('love_notes')"
+            id="nav-love_notes"
+            class="nav-link px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium tracking-wide transition-all flex items-center gap-2 whitespace-nowrap"
+          >
+            <i data-lucide="feather" class="w-3.5 h-3.5"></i>
+            <span>Love Notes</span>
+          </button>
+          <button
+            onclick="navigateTo('celebration')"
+            id="nav-celebration"
+            class="nav-link px-3.5 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium tracking-wide transition-all flex items-center gap-2 whitespace-nowrap"
+          >
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>Celebration</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- =====================================================================
+       MAIN CONTENT VIEWPORT
+       ===================================================================== -->
+    <main
+      class="flex-grow relative z-10 max-w-6xl w-full mx-auto px-5 sm:px-8 py-10 sm:py-16"
+    >
+      <!-- ===================================================================
+         PAGE 1: HOME (Editorial Split Hero & Sacred Dates Chronicle)
+         =================================================================== -->
+      <section id="page-home" class="page-view animate-fade-up">
+        <!-- Asymmetric Split-Screen Hero -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-20"
+        >
+          <!-- Left Column: Poetic Birthday Tribute to Ojuu -->
+          <div class="lg:col-span-7 text-left space-y-6">
+            <div
+              class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-dustyrose-100/90 border border-dustyrose-300/60 text-dustyrose-700 text-xs font-medium tracking-[0.18em] uppercase"
+            >
+              <i
+                data-lucide="flower-2"
+                class="w-3.5 h-3.5 text-dustyrose-500"
+              ></i>
+              <span>Celebrating Twenty-Fifth November</span>
+            </div>
+
+            <h1
+              class="font-serif text-5xl sm:text-6xl lg:text-[68px] font-semibold text-espresso-900 leading-[1.06] tracking-tight"
+            >
+              Happy Birthday, <br />
+              <span class="italic font-normal text-dustyrose-500"
+                >Dearest Ojuu</span
+              >
+            </h1>
+
+            <!-- Custom Delicate Botanical Flourish Divider -->
+            <div class="py-1">
+              <svg
+                class="w-48 h-5 text-dustyrose-500/70"
+                viewBox="0 0 200 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 10H78M122 10H198"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M100 3C102 7.5 104.5 8.5 109 10C104.5 11.5 102 12.5 100 17C98 12.5 95.5 11.5 91 10C95.5 8.5 98 7.5 100 3Z"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  fill="rgba(183,110,121,0.15)"
+                />
+                <circle cx="84" cy="10" r="1.5" fill="currentColor" />
+                <circle cx="116" cy="10" r="1.5" fill="currentColor" />
+              </svg>
+            </div>
+
+            <p
+              class="font-serif italic text-2xl sm:text-[26px] text-espresso-800 leading-snug"
+            >
+              "For the soul who has filled my days with quiet wonder ever since
+              I first saw you, and whose birthday on the twenty-fifth of
+              November is the brightest celebration of my year."
+            </p>
+
+            <p
+              class="text-sm sm:text-base text-espresso-700/90 leading-relaxed max-w-xl font-normal"
+            >
+              Since that unforgettable
+              <strong class="font-semibold text-espresso-900"
+                >28th of Shrawan</strong
+              >
+              when I first laid eyes on you—and across every season, every
+              conversation, and every quiet moment since then, my adoration for
+              you has only grown deeper. For your birthday today on
+              <strong class="font-semibold text-espresso-900"
+                >25th of November</strong
+              >, I created this private sanctuary to honor everything you are
+              and every moment we have shared.
+            </p>
+
+            <!-- Primary Editorial Actions -->
+            <div class="pt-3 flex flex-wrap items-center gap-4">
+              <button
+                onclick="navigateTo('memories')"
+                class="px-8 py-4 rounded-full bg-espresso-900 hover:bg-dustyrose-600 text-champagne text-sm font-medium tracking-wider uppercase transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-3 group"
+              >
+                <span>View Seventeen Photographs</span>
+                <i
+                  data-lucide="arrow-right"
+                  class="w-4 h-4 transition-transform group-hover:translate-x-1"
+                ></i>
+              </button>
+
+              <button
+                onclick="navigateTo('love_notes')"
+                class="px-7 py-4 rounded-full bg-white/85 hover:bg-white text-espresso-900 border border-dustyrose-500/35 text-sm font-medium tracking-wider uppercase transition-all flex items-center gap-2.5 shadow-sm"
+              >
+                <i
+                  data-lucide="mail-open"
+                  class="w-4 h-4 text-dustyrose-500"
+                ></i>
+                <span>Read My Letter to You</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Column: Ornate Arched Portrait Frame of Ojuu -->
+          <div class="lg:col-span-5 flex justify-center relative">
+            <!-- Subtle Decorative Halo behind Arch -->
+            <div
+              class="absolute -inset-4 rounded-full bg-gradient-to-tr from-dustyrose-200/50 via-antique-200/40 to-transparent blur-2xl pointer-events-none"
+            ></div>
+
+            <div class="relative w-full max-w-[380px]">
+              <!-- Outer Botanical Wireframe Arch -->
+              <div
+                class="absolute -inset-3 arch-frame border border-dustyrose-500/30 pointer-events-none"
+              ></div>
+
+              <!-- Main Arched Portrait Container -->
+              <div
+                class="arch-frame overflow-hidden bg-ivory aspect-[4/5] relative group"
+              >
+                <img
+                  id="hero-portrait-img"
+                  src="img/photo1.jpeg"
+                  alt="Portrait of Ojuu"
+                  onerror="
+                    this.onerror = null;
+                    this.src = getArtisticPortraitFallback(0, 'Ojuu');
+                  "
+                  class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                />
+
+                <!-- Clean Bottom Vignette -->
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-espresso-900/75 via-espresso-900/20 to-transparent p-6 flex items-end justify-between"
+                >
+                  <div>
+                    <span
+                      class="text-[11px] uppercase tracking-[0.22em] text-dustyrose-200 block"
+                      >Forever Adored</span
+                    >
+                    <span class="font-serif italic text-2xl text-champagne"
+                      >Ojuu</span
+                    >
+                  </div>
+                  <span
+                    class="text-[11px] uppercase tracking-[0.2em] text-champagne/80 font-medium"
+                    >25th Nov</span
+                  >
+                </div>
+              </div>
+
+              <!-- Floating Glassmorphic Date Badge (28th Shrawan) -->
+              <div
+                class="editorial-glass rounded-2xl px-4 py-3 absolute -left-4 sm:-left-8 top-12 animate-gentle-float shadow-md hidden sm:flex items-center gap-3"
+              >
+                <div
+                  class="w-9 h-9 rounded-full bg-dustyrose-100 flex items-center justify-center text-dustyrose-600"
+                >
+                  <i data-lucide="eye" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span
+                    class="text-[10px] uppercase tracking-widest text-dustyrose-600 font-semibold block"
+                    >First Sight</span
+                  >
+                  <span
+                    class="font-serif text-base font-semibold text-espresso-900"
+                    >28th Shrawan</span
+                  >
+                </div>
+              </div>
+
+              <!-- Floating Glassmorphic Date Badge (25th November) -->
+              <div
+                class="editorial-glass rounded-2xl px-4 py-3 absolute -right-4 sm:-right-6 bottom-16 animate-gentle-float shadow-md hidden sm:flex items-center gap-3"
+                style="animation-delay: 1.5s"
+              >
+                <div
+                  class="w-9 h-9 rounded-full bg-antique-200 flex items-center justify-center text-antique-500"
+                >
+                  <i data-lucide="sparkles" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <span
+                    class="text-[10px] uppercase tracking-widest text-antique-500 font-semibold block"
+                    >Your Birthday</span
+                  >
+                  <span
+                    class="font-serif text-base font-semibold text-espresso-900"
+                    >25th November</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+           SACRED DATES CHRONICLE: 28TH SHRAWAN & 25TH NOVEMBER
+           =================================================================== -->
+        <div
+          class="editorial-glass rounded-3xl p-8 sm:p-12 relative overflow-hidden"
+        >
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span
+              class="text-xs uppercase tracking-[0.25em] text-dustyrose-500 font-semibold block mb-2"
+              >Across the Seasons</span
+            >
+            <h2
+              class="font-serif text-3xl sm:text-4xl font-semibold text-espresso-900"
+            >
+              Two Dates Engraved in My Heart
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+            <!-- Vertical Center Divider on Desktop -->
+            <div
+              class="hidden md:block absolute left-1/2 top-4 bottom-4 w-px bg-dustyrose-500/20 -translate-x-1/2"
+            ></div>
+
+            <!-- Milestone 1: 28th Shrawan (First Saw Her Over a Year and a Half Ago) -->
+            <div
+              class="bg-white/75 rounded-2xl p-7 sm:p-8 border border-dustyrose-500/15 shadow-sm hover:border-dustyrose-500/40 transition-all"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="px-3.5 py-1 rounded-full bg-dustyrose-100 text-dustyrose-700 text-xs font-semibold tracking-widest uppercase"
+                >
+                  28th Shrawan
+                </span>
+                <i data-lucide="sprout" class="w-5 h-5 text-dustyrose-500"></i>
+              </div>
+              <h3
+                class="font-serif text-2xl sm:text-3xl font-semibold text-espresso-900 mb-3"
+              >
+                The Day I First Saw You
+              </h3>
+              <p
+                class="text-sm sm:text-[15px] text-espresso-700 leading-relaxed mb-4"
+              >
+                On the twenty-eighth of Shrawan, I saw you for the very first
+                time—and nothing in my world has felt ordinary since. Through
+                every passing month, shifting season, and quiet shared memory
+                since that day, watching you and loving you has been the truest
+                gift of my life.
+              </p>
+              <p class="font-serif italic text-lg text-dustyrose-600">
+                "Seasons have turned since 28th Shrawan, yet my heart still
+                skips the very same way."
+              </p>
+            </div>
+
+            <!-- Milestone 2: 25th November (Her Birthday Celebration) -->
+            <div
+              class="bg-white/75 rounded-2xl p-7 sm:p-8 border border-dustyrose-500/15 shadow-sm hover:border-dustyrose-500/40 transition-all"
+            >
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="px-3.5 py-1 rounded-full bg-antique-200 text-espresso-900 text-xs font-semibold tracking-widest uppercase"
+                >
+                  25th November
+                </span>
+                <i data-lucide="crown" class="w-5 h-5 text-antique-500"></i>
+              </div>
+              <h3
+                class="font-serif text-2xl sm:text-3xl font-semibold text-espresso-900 mb-3"
+              >
+                Celebrating Your Birthday
+              </h3>
+              <p
+                class="text-sm sm:text-[15px] text-espresso-700 leading-relaxed mb-4"
+              >
+                Now, after all the memories we have woven together since
+                Shrawan, we arrive at your birthday twenty-fifth of November.
+                This day belongs wholly to you—to honor your radiance, your
+                gentle spirit, and the extraordinary beauty you bring into my
+                life every single day.
+              </p>
+              <p class="font-serif italic text-lg text-dustyrose-600">
+                "Here is to celebrating you today, and for countless birthdays
+                still to come."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+         PAGE 2: MEMORIES GALLERY (Clean 17 Photographs: photo1.jpg - photo17.jpg)
+         =================================================================== -->
+      <section id="page-memories" class="page-view hidden animate-fade-up">
+        <!-- Clean Minimalist Header -->
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <div
+            class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-dustyrose-500 font-semibold mb-2"
+          >
+            <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+            <span>Seventeen Cherished Frames</span>
+          </div>
+          <h2
+            class="font-serif text-3xl sm:text-5xl font-semibold text-espresso-900 mb-3"
+          >
+            Memories of Ojuu
+          </h2>
+          <p class="text-sm sm:text-base text-espresso-700 leading-relaxed">
+            Seventeen moments that capture your grace, your warmth, and the
+            quiet magic you carry. Select any photograph to open it in full view
+            alongside its reflection.
+          </p>
+        </div>
+
+        <!-- 17-Photograph Editorial Grid -->
+        <div
+          id="memories-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 sm:gap-8"
+        >
+          <!-- Populated dynamically via JavaScript -->
+        </div>
+
+        <!-- Seamless Transition to Love Notes -->
+        <div class="mt-14 text-center">
+          <button
+            onclick="navigateTo('love_notes')"
+            class="px-8 py-4 rounded-full bg-espresso-900 hover:bg-dustyrose-600 text-champagne text-sm font-medium tracking-wider uppercase transition-all shadow-lg inline-flex items-center gap-3 group"
+          >
+            <span>Continue to My Letter &amp; Love Notes</span>
+            <i
+              data-lucide="arrow-right"
+              class="w-4 h-4 transition-transform group-hover:translate-x-1"
+            ></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+         PAGE 3: LOVE NOTES (Centerpiece Personal Letter & Wax-Sealed Envelopes)
+         =================================================================== -->
+      <section id="page-love_notes" class="page-view hidden animate-fade-up">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span
+            class="text-xs uppercase tracking-[0.25em] text-dustyrose-500 font-semibold block mb-2"
+          >
+            Written With Complete Devotion
+          </span>
+          <h2
+            class="font-serif text-3xl sm:text-5xl font-semibold text-espresso-900 mb-3"
+          >
+            For You, Dearest Ojuu
+          </h2>
+          <p class="text-sm sm:text-base text-espresso-700 leading-relaxed">
+            A letter from the depths of my heart adoring every moment we have
+            lived together, followed by sealed reflections written solely for
+            you.
+          </p>
+        </div>
+
+        <!-- ===================================================================
+           CENTERPIECE LONG PERSONAL LETTER TO OJUU
+           =================================================================== -->
+        <article
+          class="editorial-glass rounded-3xl p-8 sm:p-12 md:p-14 max-w-4xl mx-auto mb-14 relative overflow-hidden border border-dustyrose-500/25 shadow-xl"
+        >
+          <!-- Decorative Top Botanical Emblem -->
+          <div
+            class="flex items-center justify-between border-b border-dustyrose-500/20 pb-6 mb-8"
+          >
+            <div>
+              <span
+                class="text-[11px] uppercase tracking-[0.24em] text-dustyrose-500 font-semibold block mb-1"
+                >A Personal Letter</span
+              >
+              <h3
+                class="font-serif text-3xl sm:text-4xl font-semibold text-espresso-900"
+              >
+                Adoring Every Moment With You
+              </h3>
+            </div>
+            <div
+              class="w-12 h-12 rounded-full bg-dustyrose-100 border border-dustyrose-300/60 flex items-center justify-center text-dustyrose-600 shrink-0"
+            >
+              <i data-lucide="feather" class="w-5 h-5"></i>
+            </div>
+          </div>
+
+          <div
+            class="space-y-6 text-sm sm:text-[16px] text-espresso-800 leading-[1.85] font-normal"
+          >
+            <p class="font-serif italic text-2xl text-espresso-900">
+              My dearest Ojuu,
+            </p>
+
+            <p>
+              When I look back to that unforgettable day on the
+              <strong class="font-semibold text-espresso-900"
+                >28th of Shrawan</strong
+              >, Since I first saw you, I could scarcely have imagined just how
+              deeply you would become the center of my world. That single glance
+              stayed with me long after the day had ended—and across all the
+              months, seasons, and countless moments that have unfolded since
+              then, my admiration and love for you have only grown richer,
+              steadier, and more profound.
+            </p>
+
+            <p>
+              I adore every single moment I have spent with you till now. I
+              adore the effortless grace with which you walk through the world,
+              the warmth in your voice that can steady my heart within seconds,
+              and the way your smile illuminates even the quietest days. Every
+              conversation we have shared, every shared laugh, and even the
+              simplest moments of stillness beside you are treasures I hold
+              closer than anything else in this life.
+            </p>
+
+            <p>
+              Today on
+              <strong class="font-semibold text-espresso-900"
+                >25th of November</strong
+              >, I wanted to give you something that reflects how endlessly you
+              are cherished. You are not merely someone I love; you are my
+              favorite memory, my present joy, and the person I feel endlessly
+              grateful to walk beside. Thank you for every moment since 28th
+              Shrawan, for your kindness, and simply for being the extraordinary
+              soul you are.
+            </p>
+
+            <div
+              class="pt-4 border-t border-dustyrose-500/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+            >
+              <div>
+                <p class="font-serif italic text-2xl text-dustyrose-600">
+                  I adore you, I love you, and I celebrate you always.
+                </p>
+                <span
+                  class="text-xs uppercase tracking-[0.22em] text-espresso-700/75 mt-1 block"
+                >
+                  Forever Yours • Happy 25th Birthday
+                </span>
+              </div>
+              <!-- Wax Seal Accent -->
+              <div class="w-12 h-12 shrink-0">
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="24" cy="24" r="21" fill="#9A545F" />
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="16"
+                    stroke="#DEC6B4"
+                    stroke-width="1.2"
+                    stroke-dasharray="2 2"
+                  />
+                  <path
+                    d="M24 14L26.5 21.5L34 24L26.5 26.5L24 34L21.5 26.5L14 24L21.5 21.5L24 14Z"
+                    fill="#EFE3D8"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Interactive Reflections of Adoration Card -->
+        <div
+          class="editorial-glass rounded-3xl p-8 sm:p-11 max-w-3xl mx-auto mb-14 text-center relative overflow-hidden"
+        >
+          <div
+            class="w-11 h-11 rounded-full bg-dustyrose-100 border border-dustyrose-300/60 flex items-center justify-center mx-auto mb-5 text-dustyrose-600"
+          >
+            <i data-lucide="heart" class="w-5 h-5"></i>
+          </div>
+
+          <span
+            class="text-[11px] uppercase tracking-[0.22em] text-dustyrose-500 font-semibold block mb-3"
+          >
+            Reflections on Ojuu
+          </span>
+
+          <div
+            id="reflection-container"
+            class="min-h-[100px] flex items-center justify-center px-4 py-5 rounded-2xl bg-white/80 border border-dustyrose-500/15 mb-7 transition-all duration-300"
+          >
+            <p
+              id="reflection-quote"
+              class="font-serif italic text-xl sm:text-2xl text-espresso-900 leading-relaxed"
+            >
+              "I adore you not merely for your extraordinary beauty, Ojuu, but
+              for the quiet kindness and warmth that radiates from every moment
+              we share."
+            </p>
+          </div>
+
+          <button
+            onclick="revealNextReflection()"
+            class="px-7 py-3.5 rounded-full bg-dustyrose-500 hover:bg-dustyrose-600 text-champagne text-xs sm:text-sm font-medium tracking-wider uppercase transition-all shadow-md inline-flex items-center gap-2.5"
+          >
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>Reveal Another Reflection</span>
+          </button>
+        </div>
+
+        <!-- Four Wax-Sealed Interactive Envelopes -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+          <!-- Letter I -->
+          <div
+            onclick="toggleWaxLetter(this)"
+            class="letter-card editorial-glass rounded-3xl p-7 sm:p-9 cursor-pointer transition-all hover:shadow-xl group relative"
+          >
+            <div class="flex items-start justify-between gap-4 mb-5">
+              <div>
+                <span
+                  class="text-[11px] uppercase tracking-[0.2em] text-dustyrose-500 font-semibold block mb-1"
+                  >Note I</span
+                >
+                <h3
+                  class="font-serif text-2xl sm:text-3xl font-semibold text-espresso-900"
+                >
+                  To the Soul Who Captivated Mine
+                </h3>
+              </div>
+              <div
+                class="wax-seal shrink-0 w-12 h-12 transition-transform duration-500 group-hover:scale-110"
+              >
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="24" cy="24" r="21" fill="#9A545F" />
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="16"
+                    stroke="#DEC6B4"
+                    stroke-width="1.2"
+                    stroke-dasharray="2 2"
+                  />
+                  <path
+                    d="M24 14L26.5 21.5L34 24L26.5 26.5L24 34L21.5 26.5L14 24L21.5 21.5L24 14Z"
+                    fill="#EFE3D8"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p
+              class="letter-prompt text-xs uppercase tracking-widest text-espresso-700/70 flex items-center gap-2"
+            >
+              <i
+                data-lucide="lock-open"
+                class="w-3.5 h-3.5 text-dustyrose-500"
+              ></i>
+              <span>Select to break the seal and read</span>
+            </p>
+            <div
+              class="letter-body hidden mt-5 pt-5 border-t border-dustyrose-500/20 text-sm sm:text-[15px] text-espresso-800 leading-relaxed space-y-4 animate-fade-up"
+            >
+              <p>
+                Dearest Ojuu, there are moments when I look at you and marvel at
+                how effortlessly you outshine everything around you. Your grace
+                is never loud, yet it commands every room; your kindness is
+                gentle, yet it leaves an indelible mark on my heart.
+              </p>
+              <p class="font-serif italic text-lg text-dustyrose-600">
+                I adore you deeply, completely, and without reservation.
+              </p>
+            </div>
+          </div>
+
+          <!-- Letter II -->
+          <div
+            onclick="toggleWaxLetter(this)"
+            class="letter-card editorial-glass rounded-3xl p-7 sm:p-9 cursor-pointer transition-all hover:shadow-xl group relative"
+          >
+            <div class="flex items-start justify-between gap-4 mb-5">
+              <div>
+                <span
+                  class="text-[11px] uppercase tracking-[0.2em] text-dustyrose-500 font-semibold block mb-1"
+                  >Note II</span
+                >
+                <h3
+                  class="font-serif text-2xl sm:text-3xl font-semibold text-espresso-900"
+                >
+                  Since 28th Shrawan
+                </h3>
+              </div>
+              <div
+                class="wax-seal shrink-0 w-12 h-12 transition-transform duration-500 group-hover:scale-110"
+              >
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="24" cy="24" r="21" fill="#B76E79" />
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="16"
+                    stroke="#EFE3D8"
+                    stroke-width="1.2"
+                  />
+                  <circle cx="24" cy="24" r="5" fill="#EFE3D8" />
+                </svg>
+              </div>
+            </div>
+            <p
+              class="letter-prompt text-xs uppercase tracking-widest text-espresso-700/70 flex items-center gap-2"
+            >
+              <i
+                data-lucide="lock-open"
+                class="w-3.5 h-3.5 text-dustyrose-500"
+              ></i>
+              <span>Select to break the seal and read</span>
+            </p>
+            <div
+              class="letter-body hidden mt-5 pt-5 border-t border-dustyrose-500/20 text-sm sm:text-[15px] text-espresso-800 leading-relaxed space-y-4 animate-fade-up"
+            >
+              <p>
+                Since that 28th of Shrawan when I first saw you, yet every
+                memory from that afternoon remains crystal clear. Every season
+                since has only deepened how profoundly I cherish every hour
+                spent with you.
+              </p>
+              <p class="font-serif italic text-lg text-dustyrose-600">
+                Thank you for making every chapter since then extraordinary.
+              </p>
+            </div>
+          </div>
+
+          <!-- Letter III -->
+          <div
+            onclick="toggleWaxLetter(this)"
+            class="letter-card editorial-glass rounded-3xl p-7 sm:p-9 cursor-pointer transition-all hover:shadow-xl group relative"
+          >
+            <div class="flex items-start justify-between gap-4 mb-5">
+              <div>
+                <span
+                  class="text-[11px] uppercase tracking-[0.2em] text-dustyrose-500 font-semibold block mb-1"
+                  >Note III</span
+                >
+                <h3
+                  class="font-serif text-2xl sm:text-3xl font-semibold text-espresso-900"
+                >
+                  Your Radiance &amp; Poise
+                </h3>
+              </div>
+              <div
+                class="wax-seal shrink-0 w-12 h-12 transition-transform duration-500 group-hover:scale-110"
+              >
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="24" cy="24" r="21" fill="#7B3E48" />
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="16"
+                    stroke="#DEC6B4"
+                    stroke-width="1.2"
+                  />
+                  <path
+                    d="M24 15C26 20 28 22 33 24C28 26 26 28 24 33C22 28 20 26 15 24C20 22 22 20 24 15Z"
+                    fill="#EFE3D8"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p
+              class="letter-prompt text-xs uppercase tracking-widest text-espresso-700/70 flex items-center gap-2"
+            >
+              <i
+                data-lucide="lock-open"
+                class="w-3.5 h-3.5 text-dustyrose-500"
+              ></i>
+              <span>Select to break the seal and read</span>
+            </p>
+            <div
+              class="letter-body hidden mt-5 pt-5 border-t border-dustyrose-500/20 text-sm sm:text-[15px] text-espresso-800 leading-relaxed space-y-4 animate-fade-up"
+            >
+              <p>
+                Whether captured in a photograph or standing right beside me,
+                you possess a timeless elegance that takes my breath away. You
+                are my calm in every storm, my favorite thought at dawn, and the
+                person I cherish above all else.
+              </p>
+              <p class="font-serif italic text-lg text-dustyrose-600">
+                Loving you is the easiest, truest thing I have ever known.
+              </p>
+            </div>
+          </div>
+
+          <!-- Letter IV -->
+          <div
+            onclick="toggleWaxLetter(this)"
+            class="letter-card editorial-glass rounded-3xl p-7 sm:p-9 cursor-pointer transition-all hover:shadow-xl group relative"
+          >
+            <div class="flex items-start justify-between gap-4 mb-5">
+              <div>
+                <span
+                  class="text-[11px] uppercase tracking-[0.2em] text-dustyrose-500 font-semibold block mb-1"
+                  >Note IV</span
+                >
+                <h3
+                  class="font-serif text-2xl sm:text-3xl font-semibold text-espresso-900"
+                >
+                  A Vow for 25th November
+                </h3>
+              </div>
+              <div
+                class="wax-seal shrink-0 w-12 h-12 transition-transform duration-500 group-hover:scale-110"
+              >
+                <svg
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="24" cy="24" r="21" fill="#A97E65" />
+                  <circle
+                    cx="24"
+                    cy="24"
+                    r="16"
+                    stroke="#FAF6F0"
+                    stroke-width="1.2"
+                  />
+                  <path
+                    d="M18 24H30M24 18V30"
+                    stroke="#FAF6F0"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+            </div>
+            <p
+              class="letter-prompt text-xs uppercase tracking-widest text-espresso-700/70 flex items-center gap-2"
+            >
+              <i
+                data-lucide="lock-open"
+                class="w-3.5 h-3.5 text-dustyrose-500"
+              ></i>
+              <span>Select to break the seal and read</span>
+            </p>
+            <div
+              class="letter-body hidden mt-5 pt-5 border-t border-dustyrose-500/20 text-sm sm:text-[15px] text-espresso-800 leading-relaxed space-y-4 animate-fade-up"
+            >
+              <p>
+                Today on this special day 25th of November, my promise to you is
+                simple: to stand beside you in every triumph, to cherish every
+                quiet evening, and to remind you every single day just how
+                deeply you are adored.
+              </p>
+              <p class="font-serif italic text-lg text-dustyrose-600">
+                Happy Birthday, My beloved Ojuu.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transition CTA to Celebration -->
+        <div class="mt-14 text-center">
+          <button
+            onclick="navigateTo('celebration')"
+            class="px-8 py-4 rounded-full bg-espresso-900 hover:bg-dustyrose-600 text-champagne text-sm font-medium tracking-wider uppercase transition-all shadow-lg inline-flex items-center gap-3 group"
+          >
+            <span>Proceed to Your 25th November Celebration</span>
+            <i
+              data-lucide="arrow-right"
+              class="w-4 h-4 transition-transform group-hover:translate-x-1"
+            ></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+         PAGE 4: CELEBRATION (Botanical Garden & Candlelight Wish Ceremony)
+         =================================================================== -->
+      <section id="page-celebration" class="page-view hidden animate-fade-up">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span
+            class="text-xs uppercase tracking-[0.25em] text-dustyrose-500 font-semibold block mb-2"
+          >
+            Twenty-Fifth November Celebration
+          </span>
+          <h2
+            class="font-serif text-3xl sm:text-5xl font-semibold text-espresso-900 mb-3"
+          >
+            Blooms &amp; Candlelight for Ojuu
+          </h2>
+          <p class="text-sm sm:text-base text-espresso-700 leading-relaxed">
+            Awaken each botanical stem to unfurl a birthday blessing, then make
+            your wish and extinguish the candlelight to reveal your final
+            tribute.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <!-- Interactive Botanical Garden of Wishes -->
+          <div
+            class="editorial-glass rounded-3xl p-8 sm:p-10 flex flex-col justify-between text-center"
+          >
+            <div>
+              <span
+                class="text-[11px] uppercase tracking-[0.2em] text-dustyrose-500 font-semibold block mb-1"
+                >Part One</span
+              >
+              <h3
+                class="font-serif text-2xl sm:text-3xl font-semibold text-espresso-900 mb-2"
+              >
+                The Botanical Garden of Wishes
+              </h3>
+              <p class="text-xs sm:text-sm text-espresso-700 mb-8">
+                Touch each botanical bud below to bring it into full bloom.
+              </p>
+            </div>
+
+            <!-- 4 Custom SVG Botanical Stems -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-4">
+              <!-- Stem 1: Damask Rose -->
+              <button
+                onclick="bloomBotanical(0, this)"
+                class="botanical-btn group p-4 rounded-2xl bg-white/80 hover:bg-white border border-dustyrose-500/20 hover:border-dustyrose-500/50 transition-all flex flex-col items-center"
+              >
+                <div
+                  class="bloom-visual w-16 h-16 flex items-center justify-center mb-2"
+                >
+                  <svg
+                    class="w-12 h-12 text-dustyrose-400 transition-transform group-hover:scale-110"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                  >
+                    <path
+                      d="M24 42V22"
+                      stroke="#7A8B74"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M24 32C19 32 16 28 16 24C20 24 23 27 24 32Z"
+                      fill="#8FA189"
+                    />
+                    <path
+                      d="M24 10C29 14 30 20 24 24C18 20 19 14 24 10Z"
+                      fill="#D48C9E"
+                      stroke="#B76E79"
+                      stroke-width="1.2"
+                    />
+                  </svg>
+                </div>
+                <span
+                  class="bloom-title font-serif text-base font-semibold text-espresso-900"
+                  >Rose Bud</span
+                >
+                <span
+                  class="bloom-sub text-[10px] uppercase tracking-widest text-dustyrose-500 mt-0.5"
+                  >Touch to Bloom</span
+                >
+              </button>
+
+              <!-- Stem 2: Peony -->
+              <button
+                onclick="bloomBotanical(1, this)"
+                class="botanical-btn group p-4 rounded-2xl bg-white/80 hover:bg-white border border-dustyrose-500/20 hover:border-dustyrose-500/50 transition-all flex flex-col items-center"
+              >
+                <div
+                  class="bloom-visual w-16 h-16 flex items-center justify-center mb-2"
+                >
+                  <svg
+                    class="w-12 h-12 text-dustyrose-400 transition-transform group-hover:scale-110"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                  >
+                    <path
+                      d="M24 42V22"
+                      stroke="#7A8B74"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M24 34C29 34 32 30 32 26C28 26 25 29 24 34Z"
+                      fill="#8FA189"
+                    />
+                    <path
+                      d="M24 10C29 14 30 20 24 24C18 20 19 14 24 10Z"
+                      fill="#DFB6C0"
+                      stroke="#B76E79"
+                      stroke-width="1.2"
+                    />
+                  </svg>
+                </div>
+                <span
+                  class="bloom-title font-serif text-base font-semibold text-espresso-900"
+                  >Peony Bud</span
+                >
+                <span
+                  class="bloom-sub text-[10px] uppercase tracking-widest text-dustyrose-500 mt-0.5"
+                  >Touch to Bloom</span
+                >
+              </button>
+
+              <!-- Stem 3: White Lily -->
+              <button
+                onclick="bloomBotanical(2, this)"
+                class="botanical-btn group p-4 rounded-2xl bg-white/80 hover:bg-white border border-dustyrose-500/20 hover:border-dustyrose-500/50 transition-all flex flex-col items-center"
+              >
+                <div
+                  class="bloom-visual w-16 h-16 flex items-center justify-center mb-2"
+                >
+                  <svg
+                    class="w-12 h-12 text-dustyrose-400 transition-transform group-hover:scale-110"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                  >
+                    <path
+                      d="M24 42V22"
+                      stroke="#7A8B74"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M24 30C19 30 16 26 16 22C20 22 23 25 24 30Z"
+                      fill="#8FA189"
+                    />
+                    <path
+                      d="M24 10C29 14 30 20 24 24C18 20 19 14 24 10Z"
+                      fill="#EFE3D8"
+                      stroke="#A97E65"
+                      stroke-width="1.2"
+                    />
+                  </svg>
+                </div>
+                <span
+                  class="bloom-title font-serif text-base font-semibold text-espresso-900"
+                  >Lily Bud</span
+                >
+                <span
+                  class="bloom-sub text-[10px] uppercase tracking-widest text-dustyrose-500 mt-0.5"
+                  >Touch to Bloom</span
+                >
+              </button>
+
+              <!-- Stem 4: Camellia -->
+              <button
+                onclick="bloomBotanical(3, this)"
+                class="botanical-btn group p-4 rounded-2xl bg-white/80 hover:bg-white border border-dustyrose-500/20 hover:border-dustyrose-500/50 transition-all flex flex-col items-center"
+              >
+                <div
+                  class="bloom-visual w-16 h-16 flex items-center justify-center mb-2"
+                >
+                  <svg
+                    class="w-12 h-12 text-dustyrose-400 transition-transform group-hover:scale-110"
+                    viewBox="0 0 48 48"
+                    fill="none"
+                  >
+                    <path
+                      d="M24 42V22"
+                      stroke="#7A8B74"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M24 32C29 32 32 28 32 24C28 24 25 27 24 32Z"
+                      fill="#8FA189"
+                    />
+                    <path
+                      d="M24 10C29 14 30 20 24 24C18 20 19 14 24 10Z"
+                      fill="#C9A96E"
+                      stroke="#9A545F"
+                      stroke-width="1.2"
+                    />
+                  </svg>
+                </div>
+                <span
+                  class="bloom-title font-serif text-base font-semibold text-espresso-900"
+                  >Camellia Bud</span
+                >
+                <span
+                  class="bloom-sub text-[10px] uppercase tracking-widest text-dustyrose-500 mt-0.5"
+                  >Touch to Bloom</span
+                >
+              </button>
+            </div>
+
+            <div
+              class="mt-6 p-5 rounded-2xl bg-white/85 border border-dustyrose-500/15 min-h-[84px] flex items-center justify-center"
+            >
+              <p
+                id="botanical-blessing-text"
+                class="font-serif italic text-lg text-espresso-900 leading-relaxed"
+              >
+                "Every flower carries a silent wish for your happiness, Ojuu.
+                Touch a stem above to unveil its blessing."
+              </p>
+            </div>
+          </div>
+
+          <!-- Artisanal Birthday Candlelight Ceremony -->
+          <div
+            class="editorial-glass rounded-3xl p-8 sm:p-10 flex flex-col justify-between items-center text-center"
+          >
+            <div>
+              <span
+                class="text-[11px] uppercase tracking-[0.2em] text-dustyrose-500 font-semibold block mb-1"
+                >Part Two</span
+              >
+              <h3
+                class="font-serif text-2xl sm:text-3xl font-semibold text-espresso-900 mb-2"
+              >
+                The Candlelight Wish Ceremony
+              </h3>
+              <p
+                id="ceremony-prompt"
+                class="text-xs sm:text-sm text-espresso-700 mb-4"
+              >
+                Close your eyes, hold a wish close to your heart, and extinguish
+                the flames.
+              </p>
+            </div>
+
+            <!-- Artisanal Illustrated Two-Tier Botanical Cake SVG -->
+            <div
+              onclick="extinguishCandles()"
+              class="cursor-pointer my-2 select-none group"
+            >
+              <svg
+                width="260"
+                height="225"
+                viewBox="0 0 260 225"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="mx-auto"
+              >
+                <!-- Pedestal Stand -->
+                <path d="M105 195H155L165 212H95L105 195Z" fill="#DEC6B4" />
+                <ellipse
+                  cx="130"
+                  cy="195"
+                  rx="108"
+                  ry="12"
+                  fill="#EFE3D8"
+                  stroke="#C9A96E"
+                  stroke-width="1.2"
+                />
+
+                <!-- Lower Tier -->
+                <rect
+                  x="48"
+                  y="136"
+                  width="164"
+                  height="58"
+                  rx="10"
+                  fill="#F8ECEE"
+                  stroke="#D48C9E"
+                  stroke-width="1.3"
+                />
+                <!-- Botanical Garland on Lower Tier -->
+                <path
+                  d="M56 164Q93 180 130 164T204 164"
+                  stroke="#B76E79"
+                  stroke-width="1.2"
+                  fill="none"
+                />
+                <circle cx="93" cy="171" r="3" fill="#D48C9E" />
+                <circle cx="130" cy="164" r="3.5" fill="#B76E79" />
+                <circle cx="167" cy="171" r="3" fill="#D48C9E" />
+
+                <!-- Upper Tier -->
+                <rect
+                  x="74"
+                  y="88"
+                  width="112"
+                  height="48"
+                  rx="9"
+                  fill="#FFFFFF"
+                  stroke="#D48C9E"
+                  stroke-width="1.3"
+                />
+                <path
+                  d="M74 104Q92 114 111 104T148 104T186 104"
+                  stroke="#DFB6C0"
+                  stroke-width="1.5"
+                  fill="none"
+                />
+
+                <!-- Three Taper Candles -->
+                <rect
+                  x="96"
+                  y="54"
+                  width="6"
+                  height="34"
+                  rx="3"
+                  fill="#EFE3D8"
+                  stroke="#B76E79"
+                  stroke-width="1"
+                />
+                <rect
+                  x="127"
+                  y="48"
+                  width="6"
+                  height="40"
+                  rx="3"
+                  fill="#EFE3D8"
+                  stroke="#B76E79"
+                  stroke-width="1"
+                />
+                <rect
+                  x="158"
+                  y="54"
+                  width="6"
+                  height="34"
+                  rx="3"
+                  fill="#EFE3D8"
+                  stroke="#B76E79"
+                  stroke-width="1"
+                />
+
+                <!-- Candle Flames Group -->
+                <g id="ceremony-flames">
+                  <!-- Left Flame -->
+                  <path
+                    class="flame-animate"
+                    d="M99 34C95 41 95 48 99 51C103 48 103 41 99 34Z"
+                    fill="#E6A15C"
+                  />
+                  <path
+                    class="flame-animate"
+                    d="M99 40C97 43 97 47 99 49C101 47 101 43 99 40Z"
+                    fill="#FFF6D6"
+                  />
+                  <!-- Center Flame -->
+                  <path
+                    class="flame-animate"
+                    d="M130 26C125 35 125 43 130 46C135 43 135 35 130 26Z"
+                    fill="#D98A3C"
+                  />
+                  <path
+                    class="flame-animate"
+                    d="M130 33C128 37 128 42 130 44C132 42 132 37 130 33Z"
+                    fill="#FFF6D6"
+                  />
+                  <!-- Right Flame -->
+                  <path
+                    class="flame-animate"
+                    d="M161 34C157 41 157 48 161 51C165 48 165 41 161 34Z"
+                    fill="#E6A15C"
+                  />
+                  <path
+                    class="flame-animate"
+                    d="M161 40C159 43 159 47 161 49C163 47 163 43 161 40Z"
+                    fill="#FFF6D6"
+                  />
+                </g>
+              </svg>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button
+                id="extinguish-btn"
+                onclick="extinguishCandles()"
+                class="px-7 py-3.5 rounded-full bg-espresso-900 hover:bg-dustyrose-600 text-champagne text-xs sm:text-sm font-medium tracking-wider uppercase transition-all shadow-md flex items-center gap-2"
+              >
+                <i data-lucide="wind" class="w-4 h-4"></i>
+                <span>Make a Wish &amp; Blow Candles</span>
+              </button>
+              <button
+                id="rekindle-btn"
+                onclick="rekindleCandles()"
+                class="hidden px-6 py-3.5 rounded-full bg-white hover:bg-ivory text-espresso-900 border border-dustyrose-500/30 text-xs font-medium tracking-wider uppercase transition-all flex items-center gap-2"
+              >
+                <i data-lucide="flame" class="w-4 h-4 text-dustyrose-500"></i>
+                <span>Rekindle</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unlocked Grand 25th November Letter -->
+        <div
+          id="grand-birthday-tribute"
+          class="hidden mt-12 editorial-glass rounded-3xl p-8 sm:p-14 border border-dustyrose-500/40 text-center max-w-3xl mx-auto animate-fade-up shadow-xl"
+        >
+          <div
+            class="w-12 h-12 rounded-full bg-dustyrose-100 border border-dustyrose-300 flex items-center justify-center mx-auto mb-5 text-dustyrose-600"
+          >
+            <i data-lucide="award" class="w-6 h-6"></i>
+          </div>
+          <span
+            class="text-xs uppercase tracking-[0.25em] text-dustyrose-500 font-semibold block mb-2"
+          >
+            Twenty-Fifth November • Wish Sealed
+          </span>
+          <h3
+            class="font-serif text-3xl sm:text-5xl font-semibold text-espresso-900 mb-5"
+          >
+            Happy Birthday, My Beloved Ojuu
+          </h3>
+          <p
+            class="text-base sm:text-lg text-espresso-800 leading-relaxed mb-6 max-w-2xl mx-auto"
+          >
+            May every wish you whispered tonight unfold with grace across the
+            year ahead. Through every season since I first saw you on 28th
+            Shrawan up to this 25th of November and all the years yet to come,
+            you remain my greatest inspiration, my deepest joy, and the person I
+            adore beyond all measure.
+          </p>
+          <p class="font-serif italic text-2xl text-dustyrose-600">
+            Forever and always yours.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- =====================================================================
+       EDITORIAL ROMANTIC FOOTER
+       ===================================================================== -->
+    <footer
+      class="relative z-10 border-t border-dustyrose-500/20 bg-ivory/80 backdrop-blur-md mt-16"
+    >
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 py-12">
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left"
+        >
+          <!-- Left: Monogram & Dedication -->
+          <div>
+            <span
+              class="font-serif text-2xl font-semibold tracking-[0.22em] text-espresso-900 block mb-2"
+              >OJUU</span
+            >
+            <p
+              class="text-xs text-espresso-700/80 leading-relaxed max-w-xs mx-auto md:mx-0"
+            >
+              A private digital sanctuary crafted in celebration of your life,
+              your beauty, and every moment since I first saw you on 28th
+              Shrawan.
+            </p>
+          </div>
+
+          <!-- Center: Bespoke Botanical Divider & Sacred Dates -->
+          <div class="flex flex-col items-center justify-center">
+            <svg
+              class="w-36 h-6 text-dustyrose-500 mb-3"
+              viewBox="0 0 160 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 12H62M98 12H156"
+                stroke="currentColor"
+                stroke-width="1"
+                stroke-linecap="round"
+              />
+              <path
+                d="M80 4C82.5 9 85 10.5 90 12C85 13.5 82.5 15 80 20C77.5 15 75 13.5 70 12C75 10.5 77.5 9 80 4Z"
+                stroke="currentColor"
+                stroke-width="1.2"
+                fill="rgba(183,110,121,0.18)"
+              />
+            </svg>
+            <div
+              class="flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-espresso-800 font-medium"
+            >
+              <span>29th Asar</span>
+              <span class="text-dustyrose-500">&bull;</span>
+              <span>25th November</span>
+            </div>
+          </div>
+
+          <!-- Right: Quick Page Directory -->
+          <div
+            class="flex flex-wrap items-center justify-center md:justify-end gap-5 text-xs uppercase tracking-widest text-espresso-800 font-medium"
+          >
+            <button
+              onclick="navigateTo('home')"
+              class="hover:text-dustyrose-500 transition-colors"
+            >
+              Home
+            </button>
+            <button
+              onclick="navigateTo('memories')"
+              class="hover:text-dustyrose-500 transition-colors"
+            >
+              Memories
+            </button>
+            <button
+              onclick="navigateTo('love_notes')"
+              class="hover:text-dustyrose-500 transition-colors"
+            >
+              Love Notes
+            </button>
+            <button
+              onclick="navigateTo('celebration')"
+              class="hover:text-dustyrose-500 transition-colors"
+            >
+              Celebration
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="mt-8 pt-6 border-t border-dustyrose-500/15 text-center text-[11px] tracking-widest uppercase text-espresso-700/65"
+        >
+          Dedicated with Endless Adoration to Ojuu
+        </div>
+      </div>
+    </footer>
+
+    <!-- =====================================================================
+       EDITORIAL FULL-SCREEN LIGHTBOX MODAL (For Her 17 Photographs)
+       ===================================================================== -->
+    <div
+      id="editorial-lightbox"
+      class="fixed inset-0 z-50 hidden bg-espresso-900/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+      onclick="closeEditorialLightbox(event)"
+    >
+      <div
+        class="bg-champagne rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl border border-dustyrose-500/30 grid grid-cols-1 md:grid-cols-12 relative animate-fade-up"
+        onclick="event.stopPropagation()"
+      >
+        <!-- Close Button -->
+        <button
+          onclick="closeEditorialLightbox()"
+          aria-label="Close Lightbox"
+          class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 hover:bg-espresso-900 text-espresso-900 hover:text-champagne shadow-md flex items-center justify-center transition-colors"
+        >
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Left: Photograph Display -->
+        <div
+          class="md:col-span-7 bg-ivory flex items-center justify-center aspect-[4/5] md:aspect-auto md:min-h-[480px] relative"
+        >
+          <img
+            id="lb-photo"
+            src="img/photo1.jpeg"
+            alt="Ojuu Memory"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <!-- Right: Literary Memory Note & Controls -->
+        <div
+          class="md:col-span-5 p-7 sm:p-9 flex flex-col justify-between bg-champagne"
+        >
+          <div>
+            <span
+              id="lb-counter"
+              class="text-[11px] uppercase tracking-[0.24em] text-dustyrose-500 font-semibold block mb-2"
+            >
+              Frame 01 of 17
+            </span>
+            <h3
+              id="lb-title"
+              class="font-serif text-3xl font-semibold text-espresso-900 mb-4 leading-tight"
+            >
+              Timeless Radiance
+            </h3>
+            <div class="w-12 h-px bg-dustyrose-500/40 mb-5"></div>
+            <p
+              id="lb-caption"
+              class="text-sm sm:text-[15px] text-espresso-800 leading-relaxed"
+            >
+              Every photograph of you captures a grace that words only aspire to
+              describe.
+            </p>
+          </div>
+
+          <div
+            class="pt-6 mt-6 border-t border-dustyrose-500/15 flex items-center justify-between gap-3"
+          >
+            <button
+              onclick="stepLightbox(-1)"
+              class="px-4 py-2.5 rounded-full bg-ivory hover:bg-dustyrose-100 text-espresso-900 text-xs uppercase tracking-wider font-medium transition-colors flex items-center gap-1.5"
+            >
+              <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+              <span>Previous</span>
+            </button>
+            <button
+              onclick="stepLightbox(1)"
+              class="px-4 py-2.5 rounded-full bg-ivory hover:bg-dustyrose-100 text-espresso-900 text-xs uppercase tracking-wider font-medium transition-colors flex items-center gap-1.5"
+            >
+              <span>Next</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+       APPLICATION LOGIC (Zero Emojis, Clean Literary Prose, Full Interactivity)
+       ===================================================================== -->
+    <script>
+      // 1. Seventeen Literary Memory Entries for Ojuu (photo1.jpg - photo17.jpg)
+      const ojuuMemories = [
+        {
+          id: 1,
+          src: "img/photo1.jpeg",
+          title: "Effortless Grace",
+          note: "There is a quiet luminosity in the way you carry yourself—a poise that turns an ordinary instant into a work of art.",
+        },
+        {
+          id: 2,
+          src: "img/photo2.jpeg",
+          title: "The Warmth of Your Smile",
+          note: "Of all the beauty in this world, nothing compares to the genuine radiance of your smile.",
+        },
+        {
+          id: 3,
+          src: "img/photo3.jpeg",
+          title: "Echoes of 28th Shrawan",
+          note: "Looking at you still brings back the same gentle wonder I felt when I first saw you on 28th Shrawan.",
+        },
+        {
+          id: 4,
+          src: "img/photo4.jpeg",
+          title: "Golden Serenity",
+          note: "Even the softest evening light seems to linger a little longer whenever it falls across your face.",
+        },
+        {
+          id: 5,
+          src: "img/photo5.jpeg",
+          title: "Depth & Kindness",
+          note: "Your eyes hold a rare combination of gentleness, intelligence, and warmth that captivates me endlessly.",
+        },
+        {
+          id: 6,
+          src: "img/photo6.jpeg",
+          title: "Unscripted Poetry",
+          note: "In every candid glance, you possess an elegance that requires no adornment and no effort.",
+        },
+        {
+          id: 7,
+          src: "img/photo7.jpeg",
+          title: "A Quiet Sanctuary",
+          note: "Simply seeing this portrait reminds me of the peace and certainty I feel whenever I am near you.",
+        },
+        {
+          id: 8,
+          src: "img/photo8.jpeg",
+          title: "Timeless Allure",
+          note: "Some beauty fades with passing hours, yet yours seems to deepen with every season we share.",
+        },
+        {
+          id: 9,
+          src: "img/photo9.jpeg",
+          title: "Pure Joy",
+          note: "Your happiness is my favorite sight; every moment you laugh feels like a celebration in itself.",
+        },
+        {
+          id: 10,
+          src: "img/photo10.jpeg",
+          title: "Incomparable",
+          note: "Among millions of faces, my heart recognizes only yours as home.",
+        },
+        {
+          id: 11,
+          src: "img/photo11.jpeg",
+          title: "Softness & Strength",
+          note: "You embody both a tender heart and a remarkable spirit—a balance I admire more every single day.",
+        },
+        {
+          id: 12,
+          src: "img/photo12.jpeg",
+          title: "Luminous Presence",
+          note: "Wherever you stand, the entire atmosphere grows warmer, brighter, and infinitely more alive.",
+        },
+        {
+          id: 13,
+          src: "img/photo13.jpeg",
+          title: "A Cherished Frame",
+          note: "One of my most treasured captures of the soul I adore beyond all measure.",
+        },
+        {
+          id: 14,
+          src: "img/photo14.jpeg",
+          title: "Subtle Magic",
+          note: "It is in the smallest expressions—a tilted glance, a gentle smile—that you steal my heart all over again.",
+        },
+        {
+          id: 15,
+          src: "img/photo15.jpeg",
+          title: "My Favorite Story",
+          note: "Every photograph here is a page from the happiest chapter my life has ever known.",
+        },
+        {
+          id: 16,
+          src: "img/photo16.jpeg",
+          title: "Enduring Admiration",
+          note: "No matter how many years pass, I will never stop marveling at how extraordinary you are.",
+        },
+        {
+          id: 17,
+          src: "img/photo17.jpeg",
+          title: "Twenty-Fifth November",
+          note: "Celebrating your birthday on 25th November, Ojuu—and wishing you a lifetime as breathtaking as you are.",
+        },
+      ];
+
+      let activeLightboxIdx = 0;
+
+      // Artistic Botanical SVG Fallback when photoX.jpg is not yet placed alongside index.html
+      function getArtisticPortraitFallback(idx, label) {
+        const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="480" height="600" viewBox="0 0 480 600">
+          <defs>
+            <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F5EFE6"/>
+              <stop offset="55%" stop-color="#F8ECEE"/>
+              <stop offset="100%" stop-color="#EFE3D8"/>
+            </linearGradient>
+          </defs>
+          <rect width="480" height="600" fill="url(#bg)"/>
+          <rect x="24" y="24" width="432" height="552" rx="12" fill="none" stroke="#B76E79" stroke-opacity="0.28" stroke-width="1.2"/>
+          <circle cx="240" cy="240" r="64" fill="none" stroke="#B76E79" stroke-opacity="0.4" stroke-width="1.2"/>
+          <path d="M240 190 C248 218, 262 232, 290 240 C262 248, 248 262, 240 290 C232 262, 218 248, 190 240 C218 232, 232 218, 240 190 Z" fill="#D48C9E" fill-opacity="0.25" stroke="#B76E79" stroke-width="1.2"/>
+          <text x="240" y="355" font-family="Georgia, serif" font-size="24" fill="#2B2124" text-anchor="middle" letter-spacing="4">OJUU</text>
+          <text x="240" y="388" font-family="Georgia, italic" font-size="16" fill="#9A545F" text-anchor="middle">${label}</text>
+          <text x="240" y="422" font-family="sans-serif" font-size="11" fill="#4A383E" fill-opacity="0.65" text-anchor="middle" letter-spacing="1.5">photo${idx + 1}.jpg</text>
+        </svg>
+      `;
+        return (
+          "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg.trim())
+        );
+      }
+
+      // 2. Render 17 Editorial Frames in Memories Section
+      function renderMemoriesGallery() {
+        const grid = document.getElementById("memories-grid");
+        grid.innerHTML = "";
+
+        ojuuMemories.forEach((item, index) => {
+          const fallback = getArtisticPortraitFallback(index, item.title);
+          const frameNum = String(item.id).padStart(2, "0");
+
+          const card = document.createElement("article");
+          card.className =
+            "gallery-frame rounded-2xl p-4 cursor-pointer flex flex-col justify-between group";
+          card.onclick = () => openEditorialLightbox(index);
+
+          card.innerHTML = `
+          <div>
+            <div class="relative rounded-xl overflow-hidden bg-ivory aspect-[4/5] mb-4 border border-dustyrose-500/15">
+              <img
+                id="ojuu-photo-${index}"
+                src="${item.src}"
+                alt="${item.title}"
+                onerror="this.onerror=null; this.src='${fallback}';"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-champagne/90 backdrop-blur-sm border border-dustyrose-500/20 text-[10px] font-semibold tracking-[0.2em] text-espresso-900">
+                ${frameNum}
+              </div>
+            </div>
+            <h3 class="font-serif text-2xl font-semibold text-espresso-900 mb-1.5 px-1 group-hover:text-dustyrose-600 transition-colors">
+              ${item.title}
+            </h3>
+            <p class="text-xs sm:text-[13px] text-espresso-700/90 leading-relaxed line-clamp-2 px-1">
+              ${item.note}
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-dustyrose-500/15 px-1 flex items-center justify-between text-[11px] uppercase tracking-widest text-dustyrose-500 font-medium">
+            <span>Read Reflection</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+          </div>
+        `;
+          grid.appendChild(card);
+        });
+
+        if (window.lucide) lucide.createIcons();
+      }
+
+      // 3. Lightbox Controls
+      function openEditorialLightbox(index) {
+        activeLightboxIdx = index;
+        syncLightboxView();
+        document
+          .getElementById("editorial-lightbox")
+          .classList.remove("hidden");
+      }
+
+      function closeEditorialLightbox(event) {
+        if (!event || event.target.id === "editorial-lightbox") {
+          document.getElementById("editorial-lightbox").classList.add("hidden");
+        }
+      }
+
+      function stepLightbox(delta) {
+        activeLightboxIdx =
+          (activeLightboxIdx + delta + ojuuMemories.length) %
+          ojuuMemories.length;
+        syncLightboxView();
+      }
+
+      function syncLightboxView() {
+        const item = ojuuMemories[activeLightboxIdx];
+        const imgEl = document.getElementById("lb-photo");
+        const fallback = getArtisticPortraitFallback(
+          activeLightboxIdx,
+          item.title,
+        );
+
+        imgEl.onerror = function () {
+          this.onerror = null;
+          this.src = fallback;
+        };
+        imgEl.src = item.src;
+
+        document.getElementById("lb-counter").textContent =
+          `Frame ${String(item.id).padStart(2, "0")} of 17`;
+        document.getElementById("lb-title").textContent = item.title;
+        document.getElementById("lb-caption").textContent = item.note;
+      }
+
+      // 4. Multi-Page Navigation Controller
+      function navigateTo(viewName) {
+        document
+          .querySelectorAll(".page-view")
+          .forEach((section) => section.classList.add("hidden"));
+
+        const target = document.getElementById(`page-${viewName}`);
+        if (target) {
+          target.classList.remove("hidden");
+          target.classList.remove("animate-fade-up");
+          void target.offsetWidth;
+          target.classList.add("animate-fade-up");
+        }
+
+        document.querySelectorAll(".nav-link").forEach((btn) => {
+          btn.classList.remove(
+            "bg-espresso-900",
+            "text-champagne",
+            "shadow-sm",
+          );
+          btn.classList.add("text-espresso-800", "hover:bg-dustyrose-100/70");
+        });
+
+        const activeNav = document.getElementById(`nav-${viewName}`);
+        if (activeNav) {
+          activeNav.classList.remove(
+            "text-espresso-800",
+            "hover:bg-dustyrose-100/70",
+          );
+          activeNav.classList.add(
+            "bg-espresso-900",
+            "text-champagne",
+            "shadow-sm",
+          );
+        }
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // 5. Love Notes: Reflections & Wax-Sealed Letters
+      const reflectionsOfAdoration = [
+        "I adore you not merely for your extraordinary beauty, Ojuu, but for the quiet kindness and warmth that radiates from every moment we share.",
+        "Since I first saw you on 28th Shrawan, yet every ordinary day still carries a grace I never knew existed before you.",
+        "You possess a rare elegance—effortless, sincere, and deeply captivating—that makes me fall in love with you anew each day.",
+        "In your presence, time slows down; your laughter is the most comforting melody my heart has ever known.",
+        "I cherish every moment we have lived together till now—every conversation, every shared smile, and the gentle strength in your voice.",
+        "If I could gather every flower in bloom for your birthday on 25th November, they would still pale beside the grace you carry.",
+      ];
+      let currentReflectionIdx = 0;
+
+      function revealNextReflection() {
+        let next;
+        do {
+          next = Math.floor(Math.random() * reflectionsOfAdoration.length);
+        } while (next === currentReflectionIdx);
+        currentReflectionIdx = next;
+
+        const container = document.getElementById("reflection-container");
+        const quote = document.getElementById("reflection-quote");
+
+        container.style.opacity = "0";
+        setTimeout(() => {
+          quote.textContent = `"${reflectionsOfAdoration[next]}"`;
+          container.style.opacity = "1";
+        }, 220);
+      }
+
+      function toggleWaxLetter(card) {
+        const body = card.querySelector(".letter-body");
+        const prompt = card.querySelector(".letter-prompt span");
+        const seal = card.querySelector(".wax-seal");
+        const isClosed = body.classList.contains("hidden");
+
+        if (isClosed) {
+          body.classList.remove("hidden");
+          prompt.textContent = "Seal broken — opened with adoration";
+          seal.classList.add("opacity-40", "scale-90");
+          card.classList.add("bg-white/95", "border-dustyrose-500/45");
+        } else {
+          body.classList.add("hidden");
+          prompt.textContent = "Select to break the seal and read";
+          seal.classList.remove("opacity-40", "scale-90");
+          card.classList.remove("bg-white/95", "border-dustyrose-500/45");
+        }
+      }
+
+      // 6. Celebration: Botanical Blooms & Candlelight Wish Ceremony
+      const botanicalStemsData = [
+        {
+          name: "Damask Rose",
+          blessing:
+            "A Damask Rose in full bloom—symbolizing an enduring, unwavering adoration for you, Ojuu, today and always.",
+          svg: `<svg class="w-14 h-14 animate-bloom-scale" viewBox="0 0 64 64" fill="none">
+                <path d="M32 58V34" stroke="#7A8B74" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="32" cy="24" r="14" fill="#D48C9E" fill-opacity="0.35"/>
+                <path d="M32 10C37 16 44 17 44 24C44 31 37 36 32 36C27 36 20 31 20 24C20 17 27 16 32 10Z" fill="#B76E79"/>
+                <path d="M32 15C35 19 39 20 39 24C39 28 35 31 32 31C29 31 25 28 25 24C25 20 29 19 32 15Z" fill="#DFB6C0"/>
+                <circle cx="32" cy="24" r="3.5" fill="#FAF6F0"/>
+              </svg>`,
+        },
+        {
+          name: "Blush Peony",
+          blessing:
+            "A Blush Peony—wishing you a year overflowing with serenity, gentle joy, and every dream your heart holds.",
+          svg: `<svg class="w-14 h-14 animate-bloom-scale" viewBox="0 0 64 64" fill="none">
+                <path d="M32 58V35" stroke="#7A8B74" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="24" cy="24" r="10" fill="#DFB6C0"/>
+                <circle cx="40" cy="24" r="10" fill="#DFB6C0"/>
+                <circle cx="32" cy="18" r="10" fill="#EED6DC"/>
+                <circle cx="32" cy="28" r="10" fill="#D48C9E"/>
+                <circle cx="32" cy="24" r="4.5" fill="#EFE3D8"/>
+              </svg>`,
+        },
+        {
+          name: "Ivory Lily",
+          blessing:
+            "An Ivory Lily—honoring the purity, grace, and quiet luminescence you bring into every life you touch.",
+          svg: `<svg class="w-14 h-14 animate-bloom-scale" viewBox="0 0 64 64" fill="none">
+                <path d="M32 58V34" stroke="#7A8B74" stroke-width="2" stroke-linecap="round"/>
+                <path d="M32 8L37 22L50 24L37 28L32 40L27 28L14 24L27 22L32 8Z" fill="#EFE3D8" stroke="#A97E65" stroke-width="1.2"/>
+                <circle cx="32" cy="24" r="3" fill="#C9A96E"/>
+              </svg>`,
+        },
+        {
+          name: "Antique Camellia",
+          blessing:
+            "An Antique Camellia—celebrating every season since 28th Shrawan up to this 25th of November and all the years ahead.",
+          svg: `<svg class="w-14 h-14 animate-bloom-scale" viewBox="0 0 64 64" fill="none">
+                <path d="M32 58V35" stroke="#7A8B74" stroke-width="2" stroke-linecap="round"/>
+                <path d="M32 10C36 16 46 16 46 24C46 32 36 32 32 38C28 32 18 32 18 24C18 16 28 16 32 10Z" fill="#C9A96E" fill-opacity="0.75"/>
+                <circle cx="32" cy="24" r="7" fill="#9A545F"/>
+                <circle cx="32" cy="24" r="2.5" fill="#FAF6F0"/>
+              </svg>`,
+        },
+      ];
+
+      function bloomBotanical(idx, btn) {
+        const data = botanicalStemsData[idx];
+        btn.querySelector(".bloom-visual").innerHTML = data.svg;
+        btn.querySelector(".bloom-title").textContent = data.name;
+        btn.querySelector(".bloom-sub").textContent = "In Full Bloom";
+        btn.classList.add("bg-dustyrose-100/70", "border-dustyrose-500/50");
+
+        document.getElementById("botanical-blessing-text").textContent =
+          `"${data.blessing}"`;
+      }
+
+      let flamesLit = true;
+
+      function extinguishCandles() {
+        if (!flamesLit) return;
+        flamesLit = false;
+
+        document.getElementById("ceremony-flames").style.display = "none";
+        document.getElementById("ceremony-prompt").textContent =
+          "Your wish has been sent into the universe. May every dream unfold for you.";
+        document.getElementById("extinguish-btn").classList.add("hidden");
+        document.getElementById("rekindle-btn").classList.remove("hidden");
+        document
+          .getElementById("grand-birthday-tribute")
+          .classList.remove("hidden");
+
+        triggerGoldenLightShower();
+      }
+
+      function rekindleCandles() {
+        flamesLit = true;
+        document.getElementById("ceremony-flames").style.display = "block";
+        document.getElementById("ceremony-prompt").textContent =
+          "Close your eyes, hold a wish close to your heart, and extinguish the flames.";
+        document.getElementById("extinguish-btn").classList.remove("hidden");
+        document.getElementById("rekindle-btn").classList.add("hidden");
+      }
+
+      // 7. Ambient Botanical Petals & Golden Light Motes Canvas
+      function initBotanicalCanvas() {
+        const canvas = document.getElementById("botanical-canvas");
+        const ctx = canvas.getContext("2d");
+        let w = (canvas.width = window.innerWidth);
+        let h = (canvas.height = window.innerHeight);
+
+        window.addEventListener("resize", () => {
+          w = canvas.width = window.innerWidth;
+          h = canvas.height = window.innerHeight;
+        });
+
+        const motes = Array.from({ length: 30 }, () => ({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          r: 4 + Math.random() * 6,
+          vy: 0.35 + Math.random() * 0.65,
+          vx: -0.25 + Math.random() * 0.5,
+          angle: Math.random() * Math.PI * 2,
+          vAngle: -0.015 + Math.random() * 0.03,
+          isPetal: Math.random() > 0.38,
+        }));
+
+        function render() {
+          ctx.clearRect(0, 0, w, h);
+
+          motes.forEach((m) => {
+            m.y += m.vy;
+            m.x += m.vx + Math.sin(m.angle) * 0.25;
+            m.angle += m.vAngle;
+
+            if (m.y > h + 20) {
+              m.y = -20;
+              m.x = Math.random() * w;
+            }
+
+            ctx.save();
+            ctx.translate(m.x, m.y);
+            ctx.rotate(m.angle);
+
+            if (m.isPetal) {
+              ctx.fillStyle = "rgba(212, 140, 158, 0.26)";
+              ctx.beginPath();
+              ctx.ellipse(0, 0, m.r, m.r * 0.52, 0, 0, Math.PI * 2);
+              ctx.fill();
+            } else {
+              ctx.fillStyle = "rgba(200, 162, 138, 0.35)";
+              ctx.beginPath();
+              ctx.arc(0, 0, m.r * 0.28, 0, Math.PI * 2);
+              ctx.fill();
+            }
+            ctx.restore();
+          });
+
+          requestAnimationFrame(render);
+        }
+        render();
+      }
+
+      // 8. Golden Light & Rose Petal Shower on Candle Extinguish
+      function triggerGoldenLightShower() {
+        const canvas = document.getElementById("celebration-canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const palette = ["#D48C9E", "#B76E79", "#DEC6B4", "#C8A28A", "#EED6DC"];
+        const particles = Array.from({ length: 110 }, () => ({
+          x: canvas.width / 2 + (Math.random() - 0.5) * 260,
+          y: canvas.height * 0.45,
+          vx: (Math.random() - 0.5) * 11,
+          vy: -5 - Math.random() * 9,
+          size: 5 + Math.random() * 6,
+          color: palette[Math.floor(Math.random() * palette.length)],
+          rot: Math.random() * 360,
+          vRot: (Math.random() - 0.5) * 8,
+        }));
+
+        let tick = 0;
+        function animateShower() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach((p) => {
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.28;
+            p.rot += p.vRot;
+
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rot * Math.PI) / 180);
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            ctx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+          });
+
+          tick++;
+          if (tick < 150) {
+            requestAnimationFrame(animateShower);
+          } else {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+          }
+        }
+        animateShower();
+      }
+
+      // Initialize Application
+      window.addEventListener("DOMContentLoaded", () => {
+        renderMemoriesGallery();
+        navigateTo("home");
+        initBotanicalCanvas();
+        if (window.lucide) lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>
